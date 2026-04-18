@@ -1,0 +1,2 @@
+Approach,Model,Accuracy,Precision,Recall,F1 Score,Training Time
+Approach 3,Random Forest Without Leakage,0.7472,0.04064272211720227,0.5286885245901639,0.07548273844353423,23.32

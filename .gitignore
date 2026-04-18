@@ -1,0 +1,15 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+data/ecommerce.csv
+data/ecommerce-behavior-data-from-multi-category-store.zip
+
+app/db.sqlite3
+
+outputs/models/final_model.pkl
+
+.DS_Store

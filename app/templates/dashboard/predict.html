@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Page</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fa;
+            padding: 40px;
+        }
+
+        .card {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1f3c88;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: #1f3c88;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: green;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #1f3c88;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <a href="/" class="back-btn">← Back to Dashboard</a>
+    <h1>Predict Purchase</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Brand (numeric encoded value)</label>
+        <input type="number" name="brand" required>
+
+        <label>Category (numeric encoded value)</label>
+        <input type="number" name="category" required>
+
+        <label>Price</label>
+        <input type="number" step="0.01" name="price" required>
+
+        <label>Hour</label>
+        <input type="number" name="hour" min="0" max="23" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        {{ prediction }}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

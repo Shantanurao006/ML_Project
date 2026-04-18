@@ -1,0 +1,2 @@
+Approach,Model,Accuracy,Precision,Recall,F1 Score,Training Time
+Approach 1,Logistic Regression,0.96698,0.0,0.0,0.0,0.59

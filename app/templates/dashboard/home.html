@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ML Big Data Project Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fa;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #1f3c88;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .best {
+            color: green;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th {
+            background: #1f3c88;
+            color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        img {
+            width: 48%;
+            margin: 1%;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .predict-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background: #1f3c88;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .predict-btn:hover {
+            background: #16306e;
+        }
+
+        .note {
+            margin-top: 15px;
+            font-size: 15px;
+            color: #444;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Scalable Analysis and Predictive Modeling on Large-Scale E-commerce Data</h1>
+
+    <!-- Best Model -->
+    <div class="card">
+        <h2>Best Model Selected</h2>
+
+        <p class="best">{{ best_model }}</p>
+
+        <p>
+            Approach 3 was selected because it avoids data leakage and gives the most realistic prediction performance.
+        </p>
+
+        <a href="/predict/" class="predict-btn">Go to Prediction Page</a>
+    </div>
+
+    <!-- ML Comparison -->
+    <div class="card">
+        <h2>Comparison of All Approaches</h2>
+
+        <table>
+            <tr>
+                <th>Approach</th>
+                <th>Model</th>
+                <th>Accuracy</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1 Score</th>
+                <th>Training Time</th>
+            </tr>
+
+            {% for row in results %}
+            <tr>
+                <td>{{ row.Approach }}</td>
+                <td>{{ row.Model }}</td>
+                <td>{{ row.Accuracy }}</td>
+                <td>{{ row.Precision }}</td>
+                <td>{{ row.Recall }}</td>
+                <td>{{ row.F1_Score }}</td>
+                <td>{{ row.Training_Time }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p class="note">
+            Logistic Regression failed due to class imbalance.
+            Random Forest with leakage gave unrealistic 100% accuracy.
+            Therefore, Random Forest without leakage was selected as the final model.
+        </p>
+    </div>
+
+    <!-- Pandas vs PySpark -->
+    <div class="card">
+        <h2>Pandas vs PySpark Comparison</h2>
+
+        <table>
+            <tr>
+                <th>Framework</th>
+                <th>Rows Processed</th>
+                <th>Time (Seconds)</th>
+            </tr>
+
+            {% for row in pyspark_results %}
+            <tr>
+                <td>{{ row.Framework }}</td>
+                <td>{{ row.Rows_Processed }}</td>
+                <td>{{ row.Time_Seconds }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p class="note">
+            Pandas is faster for small datasets, but PySpark is more suitable for Big Data because it can process the full 19.6 million row dataset.
+        </p>
+    </div>
+
+    <!-- Charts -->
+    <div class="card">
+        <h2>Performance Charts</h2>
+
+        <img src="/static/accuracy_comparison.png" alt="Accuracy Comparison">
+        <img src="/static/recall_comparison.png" alt="Recall Comparison">
+        <img src="/static/f1_comparison.png" alt="F1 Score Comparison">
+        <img src="/static/time_comparison.png" alt="Training Time Comparison">
+    </div>
+
+</body>
+</html>

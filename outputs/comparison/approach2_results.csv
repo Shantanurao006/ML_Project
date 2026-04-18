@@ -1,0 +1,2 @@
+Approach,Model,Accuracy,Precision,Recall,F1 Score,Training Time
+Approach 2,Random Forest,1.0,1.0,1.0,1.0,5.6

@@ -1,0 +1,2 @@
+Approach,Model,Accuracy,Precision,Recall,F1 Score,Training Time
+Approach 4,XGBoost,0.69018,0.036824302763418214,0.5911885245901639,0.0693301291679183,2.84
